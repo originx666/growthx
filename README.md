@@ -12,9 +12,13 @@
 
 ## 自我探索
 分为5个维度来帮助大家了解自我，找到自己的梦想，并帮助实现，五个维度主要包含：霍兰德职业兴趣、职业、社会价值观、大五人格、多元天赋能力，最终帮助用户了解自己的北极星梦想，确定当下的阶段罗盘并创造项目完成，同时以上内容支持导出提示词或者直接进行AI分析。
+<img width="1910" height="980" alt="3610479f8f9ac76e89af539aef1fbcc3" src="https://github.com/user-attachments/assets/805fa281-efaf-42cd-903b-c473707d7f9c" />
 
 ## 项目制学习
 主要采用OKR的方式创建、拆解项目，无限项目节点，支持项目时间轴，分享并导入项目包（导入后相关的学习资质显示未完成）。
+<img width="1914" height="976" alt="e356267a201d8668518843b76548d2cd" src="https://github.com/user-attachments/assets/19d6d095-b3e2-42c0-b1d7-fcd07a90f4b1" />
+<img width="1911" height="968" alt="ad06033472346da91176f61df465bb67" src="https://github.com/user-attachments/assets/4bfeec63-332e-47d4-bf48-46e45fb97804" />
+<img width="1914" height="976" alt="ef5298252c5ae6bdc276c039494a44ea" src="https://github.com/user-attachments/assets/0121a1f7-1fee-4ad1-8326-a46d4b0c903d" />
 
 ## 项目画布
 
@@ -26,9 +30,11 @@
 - `Ctrl+S` 保存，`Ctrl+Z` 撤销，`Delete` 删除选中元素，双击文字类元素可直接编辑。
 - 有未保存修改时退出编辑器，会提示保存、不保存或继续编辑。
 - 每个项目的画布相互独立，全部保存在本机当前账号的数据中。
+<img width="1915" height="979" alt="d19682749adfb8aa9084a205575d5ae7" src="https://github.com/user-attachments/assets/7388cd02-c5bb-41c4-9028-854f7f84a450" />
 
 ## 学习生涯数据沉淀
 支持记录自身的领域、技能、阅读、课程、证书的学习生涯数据记录，将自身数字化，让AI给自己提供建议。
+<img width="1841" height="975" alt="72c6dccf0023203f5dbe6f30b12bd601" src="https://github.com/user-attachments/assets/fbc33099-792d-44d4-84bd-57e08d57f610" />
 
 ## 隐私与存储
 
