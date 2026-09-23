@@ -12,7 +12,7 @@
 
 ## 自我探索
 分为5个维度来帮助大家了解自我，找到自己的梦想，并帮助实现，五个维度主要包含：霍兰德职业兴趣、职业、社会价值观、大五人格、多元天赋能力，最终帮助用户了解自己的北极星梦想，确定当下的阶段罗盘并创造项目完成，同时以上内容支持导出提示词或者直接进行AI分析。
-<img width="1910" height="980" alt="3610479f8f9ac76e89af539aef1fbcc3" src="https://github.com/user-attachments/assets/805fa281-efaf-42cd-903b-c473707d7f9c" />
+<img width="1893" height="970" alt="eca6b37f8810e44db41551d78aecbaa7" src="https://github.com/user-attachments/assets/ffd3cc9e-4939-4619-93b2-118454809518" />
 
 ## 项目制学习
 主要采用OKR的方式创建、拆解项目，无限项目节点，支持项目时间轴，分享并导入项目包（导入后相关的学习资质显示未完成）。
