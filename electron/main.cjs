@@ -260,6 +260,8 @@ ipcMain.handle("geruosi:check-updates",async()=>{
   if(!/^\d+\.\d+\.\d+$/.test(latestVersion))throw Error("更新服务返回的版本格式不正确");
   const parts=v=>v.split(".").map(Number),a=parts(latestVersion),b=parts(currentVersion);
   let newer=false;for(let i=0;i<3;i++){if(a[i]!==b[i]){newer=a[i]>b[i];break;}}
-  return {currentVersion,latestVersion,status:newer?"available":"latest",notes:String(data.notes||data.body||"暂无更新说明")};
+  const releaseUrl=String(data.html_url||"");
+  const downloadUrl=/^https:\/\/github\.com\//i.test(releaseUrl)?releaseUrl:"";
+  return {currentVersion,latestVersion,status:newer?"available":"latest",notes:String(data.notes||data.body||"暂无更新说明"),downloadUrl};
  }catch(error){return {currentVersion,status:"error",message:error.message};}
 });
