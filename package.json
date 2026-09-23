@@ -1,7 +1,7 @@
 {
-  "name": "geruosi",
-  "version": "1.1.1",
-  "geruosiUpdateUrl": "https://api.github.com/repos/originx666/growthx/releases/latest",
+  "name": "growthx",
+  "version": "1.1.2",
+  "geruosiUpdateUrl": "https://github.com/originx666/growthx/releases/latest",
   "description": "歌若思：本地优先的项目制学习与终身学习生涯管理工具",
   "main": "electron/main.cjs",
   "author": "歌若思开源项目",

@@ -254,14 +254,15 @@ ipcMain.handle("geruosi:check-updates",async()=>{
  if(!source)return {currentVersion,status:"unconfigured"};
  try{
   const url=new URL(source);if(url.protocol!=="https:")throw Error("更新地址必须使用 HTTPS");
-  const response=await fetch(url,{signal:AbortSignal.timeout(15000),headers:{Accept:"application/json"}});
+  const response=await fetch(url,{method:"HEAD",redirect:"follow",signal:AbortSignal.timeout(15000),headers:{Accept:"text/html","User-Agent":"geruosi-updater/"+currentVersion}});
   if(!response.ok)throw Error("更新服务暂时不可用（"+response.status+"）");
-  const data=await response.json(),latestVersion=String(data.version||data.tag_name||"").replace(/^v/,"");
-  if(!/^\d+\.\d+\.\d+$/.test(latestVersion))throw Error("更新服务返回的版本格式不正确");
+  const releaseUrl=String(response.url||"");
+  const match=releaseUrl.match(/\/releases\/tag\/v?(\d+\.\d+\.\d+)(?:[/?#]|$)/i);
+  const latestVersion=match?.[1]||"";
+  if(!latestVersion)throw Error("更新服务返回的版本格式不正确");
   const parts=v=>v.split(".").map(Number),a=parts(latestVersion),b=parts(currentVersion);
   let newer=false;for(let i=0;i<3;i++){if(a[i]!==b[i]){newer=a[i]>b[i];break;}}
-  const releaseUrl=String(data.html_url||"");
   const downloadUrl=/^https:\/\/github\.com\//i.test(releaseUrl)?releaseUrl:"";
-  return {currentVersion,latestVersion,status:newer?"available":"latest",notes:String(data.notes||data.body||"暂无更新说明"),downloadUrl};
+  return {currentVersion,latestVersion,status:newer?"available":"latest",notes:newer?"请前往最新版本发布页面查看更新内容。":"",downloadUrl};
  }catch(error){return {currentVersion,status:"error",message:error.message};}
 });
