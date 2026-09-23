@@ -1,0 +1,881 @@
+
+html body .origin-pet{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;padding:0!important;margin:0!important;border:0!important;background:transparent!important;box-shadow:none!important;color:#234438!important;cursor:pointer!important;flex:none!important;border-radius:16px!important;text-align:left!important;position:relative!important}
+html body .origin-pet .origin-art{display:block!important;width:58px!important;height:64px!important;overflow:visible!important;flex:none!important;fill:none}
+html body .origin-pet .origin-caption{display:grid!important;gap:3px!important}
+html body .origin-pet .origin-caption b{font-family:inherit!important;font-size:15px!important;letter-spacing:.04em!important;color:#335344!important;line-height:1.3!important}
+html body .origin-pet .origin-caption small{font-size:11px!important;font-weight:400!important;color:#8b9b91!important;line-height:1.4!important;white-space:nowrap!important}
+html body #careerView .career-hero{position:relative!important}
+html body #careerView .career-hero>.origin-hero{margin-left:auto!important;align-self:center!important;margin-right:12px!important}
+html body #careerView .origin-hero .origin-art{width:104px!important;height:112px!important}
+html body #careerView .origin-hero .origin-caption b{font-size:20px!important}
+html body #careerView .origin-hero .origin-caption small{font-size:12px!important}
+html body .origin-body{transform-box:fill-box;transform-origin:50% 100%}
+html body .origin-eye{transform-box:fill-box;transform-origin:center}
+html body .origin-face{transition:transform .22s ease}
+html body .origin-sprout{transform-box:fill-box;transform-origin:55% 100%;animation:origin-leaf 5s ease-in-out infinite}
+html body .origin-shadow{transform-box:fill-box;transform-origin:center;animation:origin-shadow 5s ease-in-out infinite}
+html body .origin-pet[data-state="thinking"] .origin-sprout{animation-duration:1s}
+html body .origin-pet[data-state="thinking"] .origin-caption small{color:#00ad84!important}
+html body .origin-pet:focus-visible{outline:2px solid #27c79b!important;outline-offset:4px!important}
+html body :is(.overview-ai-heading,.career-ai-heading,.assistant-head)>.origin-pet{margin-left:auto!important}
+html body :is(.overview-ai-heading,.career-ai-heading,.assistant-head)>.origin-pet .origin-caption small{display:none!important}
+html body :is(.sd-ai-output,.sd-api-config,.sd-analysis)>.origin-pet{float:right!important;margin:0 0 12px 12px!important}
+html body .sd-ai-actions>.origin-pet .origin-caption{display:none!important}
+html body .sd-plan-panel article header>.origin-pet{margin-left:auto!important}
+html body .sd-plan-panel article header>.origin-pet .origin-caption{display:none!important}
+@keyframes origin-leaf{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(3deg)}}
+@keyframes origin-shadow{0%,100%{opacity:.07;transform:scaleX(1)}50%{opacity:.045;transform:scaleX(.94)}}
+@media(prefers-reduced-motion:reduce){html body .origin-pet *{animation:none!important;transition:none!important}}
+@media(max-width:800px){html body #careerView .origin-hero .origin-art{width:65px!important;height:74px!important}html body #careerView .origin-hero .origin-caption{display:none!important}}
+
+html body .origin-pet .origin-sprout{animation:none!important;transform-box:view-box;transform-origin:92px 66px}
+html body .origin-pet .origin-leaf-left{transform-box:view-box;transform-origin:85px 41px}
+html body .origin-pet .origin-leaf-right{transform-box:view-box;transform-origin:84px 41px}
+html body .origin-pet .origin-art :is(path,ellipse){stroke:none!important;stroke-width:0!important}
+html body .origin-pet .origin-shadow{opacity:.07!important}
+
+html body .origin-pet .origin-caption,html body .origin-pet .origin-shadow{display:none!important}
+
+html body>.origin-floating{position:fixed!important;z-index:99999!important;width:100px!important;height:112px!important;touch-action:none!important;user-select:none!important;cursor:grab!important}
+html body>.origin-floating:active{cursor:grabbing!important}
+html body>.origin-floating .origin-art{width:100px!important;height:108px!important;pointer-events:none!important}
+
+html body>.origin-context-menu{
+  position:fixed!important;z-index:100300!important;display:grid!important;gap:3px!important;width:146px!important;
+  padding:7px!important;border:1px solid rgba(28,65,53,.1)!important;border-radius:14px!important;
+  background:rgba(255,255,255,.97)!important;box-shadow:0 14px 38px rgba(20,55,44,.18)!important;
+  backdrop-filter:blur(16px)!important;-webkit-backdrop-filter:blur(16px)!important;
+}
+html body>.origin-context-menu button{
+  display:flex!important;align-items:center!important;gap:10px!important;width:100%!important;height:38px!important;
+  padding:0 11px!important;border:0!important;border-radius:10px!important;background:transparent!important;
+  color:#27413a!important;font:700 14px/1 system-ui,"Microsoft YaHei",sans-serif!important;text-align:left!important;justify-content:flex-start!important;box-shadow:none!important;
+}
+html body>.origin-context-menu button span{display:block!important;flex:1 1 auto!important;text-align:left!important}
+html body>.origin-context-menu button:hover,html body>.origin-context-menu button:focus-visible{background:#f0f3f2!important;outline:none!important;transform:none!important}
+html body>.origin-context-menu button:last-child{color:#687873!important}
+html body>.origin-context-menu svg{width:18px!important;height:18px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important;flex:0 0 auto!important}
+
+html body>.origin-floating .origin-reaction-effect{position:absolute!important;inset:0!important;pointer-events:none!important;overflow:visible!important}
+html body>.origin-floating .origin-reaction-effect i{position:absolute!important;display:block!important;width:8px!important;height:8px!important;border:2px solid rgba(42,199,147,.72)!important;border-radius:50%!important;opacity:0!important}
+html body>.origin-floating .origin-reaction-effect.wave i{right:3px!important;top:9px!important;animation:originWaveArc 1.25s ease-out forwards!important}
+html body>.origin-floating .origin-reaction-effect.wave i:nth-child(2){animation-delay:.14s!important}.origin-reaction-effect.wave i:nth-child(3){animation-delay:.28s!important}
+html body>.origin-floating .origin-reaction-effect.surprise i{left:50%!important;top:48%!important;animation:originSurpriseRing 1.05s ease-out forwards!important}
+html body>.origin-floating .origin-reaction-effect.surprise i:nth-child(2){animation-delay:.13s!important}.origin-reaction-effect.surprise i:nth-child(3){animation-delay:.26s!important}
+html body>.origin-floating .origin-reaction-effect.cheer i{left:50%!important;top:28%!important;background:#57d9ad!important;border:0!important;animation:originCheerDot 1.2s ease-out forwards!important}
+html body>.origin-floating .origin-reaction-effect.cheer i:nth-child(2){--origin-burst-x:-33px;--origin-burst-y:-25px!important}.origin-reaction-effect.cheer i:nth-child(3){--origin-burst-x:34px;--origin-burst-y:-20px!important}
+html body>.origin-floating .origin-reaction-effect.sleepy i{right:15px!important;top:34px!important;width:5px!important;height:5px!important;animation:originSleepBubble 1.35s ease-out forwards!important}
+html body>.origin-floating .origin-reaction-effect.sleepy i:nth-child(2){right:7px!important;animation-delay:.2s!important}.origin-reaction-effect.sleepy i:nth-child(3){right:0!important;animation-delay:.4s!important}
+html body>.origin-floating .origin-reaction-effect.shiver i{left:7px!important;top:46px!important;width:15px!important;height:2px!important;border:0!important;border-radius:2px!important;background:#53cfa7!important;animation:originMotionLine .9s ease-in-out forwards!important}
+html body>.origin-floating .origin-reaction-effect.shiver i:nth-child(2){top:56px!important;animation-delay:.08s!important}.origin-reaction-effect.shiver i:nth-child(3){top:66px!important;animation-delay:.16s!important}
+@keyframes originWaveArc{0%{opacity:0;transform:translate(0,0) scale(.3)}35%{opacity:1}100%{opacity:0;transform:translate(19px,-18px) scale(1.6)}}
+@keyframes originSurpriseRing{0%{opacity:.8;transform:translate(-50%,-50%) scale(.2)}100%{opacity:0;transform:translate(-50%,-50%) scale(6)}}
+@keyframes originCheerDot{0%{opacity:0;transform:translate(-50%,0) scale(.4)}25%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--origin-burst-x,0px)),var(--origin-burst-y,-38px)) scale(1.1)}}
+@keyframes originSleepBubble{0%{opacity:0;transform:translate(0,3px) scale(.5)}35%{opacity:.75}100%{opacity:0;transform:translate(13px,-27px) scale(1.55)}}
+@keyframes originMotionLine{0%,100%{opacity:0;transform:translateX(5px)}30%,65%{opacity:.8;transform:translateX(-6px)}}
+html body #careerView .career-hero{min-height:0!important;margin-bottom:20px!important;padding-bottom:0!important;align-items:flex-start!important}
+html body #profileDialog{width:min(860px,92vw)!important}
+html body #profileDialog .profile-card{padding:28px!important}
+html body #profileDialog .settings-layout{display:grid!important;grid-template-columns:160px minmax(0,1fr)!important;gap:26px!important;min-height:300px!important}
+html body #profileDialog .settings-nav{display:flex!important;flex-direction:column!important;gap:8px!important;border-right:1px solid #e8edf2!important;padding-right:18px!important}
+html body #profileDialog .settings-nav button{border:0!important;background:transparent!important;text-align:left!important;border-radius:12px!important;padding:14px!important;color:#627886!important}
+html body #profileDialog .settings-nav button[aria-selected="true"]{background:#e8f8f1!important;color:#00aa80!important;font-weight:700!important}
+html body #profileDialog [data-settings-panel][hidden]{display:none!important}
+html body #profileDialog .profile-identity{margin:0 0 18px!important;padding:18px!important}
+html body #profileDialog .profile-fields{margin:0!important}
+html body #profileDialog .pet-setting-toggle{display:flex!important;justify-content:space-between!important;align-items:center!important;padding:20px!important;background:#f3f8f6!important;border-radius:14px!important;margin:22px 0!important}
+html body #profileDialog #originVisibleInput{width:22px!important;height:22px!important;min-height:0!important;accent-color:#00bb8e!important}
+html body #profileDialog .pet-setting-hint{font-size:13px!important;color:#80938b!important}
+html body #profileDialog .profile-actions{margin-top:24px!important}
+@media(max-width:600px){html body #profileDialog .settings-layout{grid-template-columns:110px minmax(0,1fr)!important;gap:12px!important}}
+
+html body #profileDialog{width:min(1120px,94vw)!important;max-height:90vh!important;padding:0!important;border-radius:26px!important;overflow:hidden!important}
+html body #profileDialog .profile-card{padding:0!important;position:relative!important;display:flex!important;flex-direction:column!important;max-height:90vh!important}
+html body #profileDialog .profile-head{display:none!important}
+html body #profileDialog .settings-layout{grid-template-columns:240px minmax(0,1fr)!important;gap:0!important;min-height:490px!important;overflow:auto!important}
+html body #profileDialog .settings-nav{padding:36px 18px!important;background:#f8fbfa!important;border-right:1px solid #eaf0ef!important;gap:12px!important}
+html body #profileDialog .settings-nav button{display:flex!important;align-items:center!important;gap:20px!important;padding:19px 22px!important;font-size:18px!important;font-weight:600!important;color:#48606f!important}
+html body #profileDialog .settings-nav button svg{width:26px!important;height:26px!important;flex:none!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+html body #profileDialog .settings-nav button[aria-selected="true"]{background:#e7f7f0!important;color:#00b487!important}
+html body #profileDialog .settings-content{padding:40px 36px!important;min-width:0!important}
+html body #profileDialog .settings-content h3{font-size:28px!important;color:#142430!important;margin:0 0 14px!important}
+html body #profileDialog .settings-content>section>p{color:#718599!important;font-size:16px!important;line-height:1.7!important;margin:0 0 32px!important}
+html body #profileDialog .pet-setting-toggle{padding:26px!important;background:#eff9f5!important;gap:20px!important;margin:0!important}
+html body #profileDialog .pet-setting-toggle span{display:grid!important;gap:9px!important}
+html body #profileDialog .pet-setting-toggle b{font-size:18px!important;color:#142430!important}
+html body #profileDialog .pet-setting-toggle small{font-size:15px!important;color:#7c91a4!important}
+html body #profileDialog #originVisibleInput{appearance:none!important;-webkit-appearance:none!important;width:62px!important;height:36px!important;min-width:62px!important;max-width:62px!important;border:0!important;border-radius:22px!important;background:#ccd8d4!important;padding:4px!important;margin:0!important;cursor:pointer!important;transition:background .2s!important}
+html body #profileDialog #originVisibleInput::after{content:"";display:block;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #0001;transition:transform .2s}
+html body #profileDialog #originVisibleInput:checked{background:#16c395!important}
+html body #profileDialog #originVisibleInput:checked::after{transform:translateX(26px)}
+html body #profileDialog .pet-setting-hint{display:none!important}
+html body #profileDialog .ai-context-toggle{display:flex!important;justify-content:space-between!important;align-items:center!important;gap:20px!important;margin:18px 0 0!important;padding:18px 20px!important;border-radius:14px!important;background:#f2f8f5!important}
+html body #profileDialog .ai-context-toggle>span{display:grid!important;gap:6px!important;min-width:0!important}
+html body #profileDialog .ai-context-toggle b{color:#17251f!important;font-size:15px!important}
+html body #profileDialog .ai-context-toggle small{color:#72847d!important;font-size:12px!important;line-height:1.55!important}
+html body #profileDialog .ai-context-toggle input{flex:0 0 auto!important;width:44px!important}
+html body #profileDialog input#settingsAiUseAppData{appearance:none!important;-webkit-appearance:none!important;width:62px!important;height:36px!important;min-width:62px!important;max-width:62px!important;min-height:36px!important;border:0!important;border-radius:22px!important;background:#ccd8d4!important;padding:4px!important;margin:0!important;cursor:pointer!important;transition:background .2s!important}
+html body #profileDialog input#settingsAiUseAppData::after{content:""!important;display:block!important;width:28px!important;height:28px!important;border-radius:50%!important;background:#fff!important;box-shadow:0 1px 3px #0001!important;transition:transform .2s!important}
+html body #profileDialog input#settingsAiUseAppData:checked{background:#16c395!important}
+html body #profileDialog input#settingsAiUseAppData:checked::after{transform:translateX(26px)!important}
+html body #profileDialog :is(.settings-layout,.settings-content,[data-settings-panel]){scrollbar-width:none!important;-ms-overflow-style:none!important}
+html body #profileDialog :is(.settings-layout,.settings-content,[data-settings-panel])::-webkit-scrollbar,
+html body #profileDialog :is(.settings-layout,.settings-content,[data-settings-panel]) *::-webkit-scrollbar{width:0!important;height:0!important;display:none!important}
+html body #profileDialog .profile-actions{margin:0!important;border-top:1px solid #eaf0ef!important;padding:22px 26px!important;background:#fff!important;min-height:86px!important}
+html body #profileDialog .profile-actions>div{display:flex!important;gap:14px!important}
+html body #profileDialog .profile-cancel{order:-1!important;background:white!important;border:1px solid #dce5eb!important;color:#728599!important}
+html body #profileDialog .profile-actions button{min-width:100px!important;height:48px!important;border-radius:12px!important}
+html body #profileDialog .profile-save{background:#14bc8d!important;color:white!important}
+html body #profileDialog .settings-close{position:absolute!important;right:18px!important;top:16px!important;z-index:2!important;width:32px!important;height:32px!important;padding:4px!important;border:0!important;background:transparent!important}
+html body #profileDialog .settings-close svg{width:24px!important;height:24px!important;stroke:#7b8e9e!important;stroke-width:1.8!important;fill:none!important}
+html body #profileDialog .profile-status:empty{display:none!important}
+@media(max-width:700px){html body #profileDialog .settings-layout{grid-template-columns:150px minmax(0,1fr)!important}html body #profileDialog .settings-nav button{gap:9px!important;padding:14px 8px!important;font-size:14px!important}html body #profileDialog .settings-content{padding:38px 18px!important}}
+
+html.electron-shell body #canvasEditor.canvas-editor{top:30px!important;bottom:0!important;height:calc(100vh - 30px)!important}
+html.electron-shell body #canvasEditor .canvas-editor-body{height:calc(100% - 72px)!important}
+
+
+
+
+
+html body .origin-reference-art .origin-sprout{transform-origin:628px 349px!important}
+html body .origin-reference-art .origin-leaf-left{transform-origin:615px 290px!important}
+html body .origin-reference-art .origin-leaf-right{transform-origin:620px 288px!important}
+html body .origin-reference-art .origin-body{transform-box:view-box!important;transform-origin:627px 1071px!important}
+
+html body .origin-reference-art .origin-face{transform-box:view-box!important;transform-origin:627px 624px!important}
+html body .origin-reference-art .origin-eye{transform-box:view-box!important}
+html body .origin-reference-art .origin-eye-left{transform-origin:515px 624px!important}
+html body .origin-reference-art .origin-eye-right{transform-origin:740px 624px!important}
+
+html body #profileDialog .settings-nav button{justify-content:flex-start!important;text-align:left!important;width:100%!important}
+html body.auth-locked .origin-floating{display:none!important}
+
+.empty-project-icon{filter:none!important}.empty-project-icon svg{width:210px;height:210px}
+
+/* Keep the project chat scrollbar against the panel edge in the final theme. */
+html body[data-view="projects"]:has(#overviewTab.detail-panel.active) #projectsView.view.active > aside.overview-ai #overviewAiMessages.overview-ai-messages,
+html body[data-view="projects"]:has(#nodesTab.detail-panel.active) #projectsView.view.active > aside.overview-ai #overviewAiMessages.overview-ai-messages,
+html body[data-view="projects"]:has(#linksTab.detail-panel.active) #projectsView.view.active > aside.overview-ai #overviewAiMessages.overview-ai-messages {
+  width: calc(100% + 28px) !important;
+  margin-right: -28px !important;
+  padding-left: 0 !important;
+  padding-right: 8px !important;
+  box-sizing: border-box !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai #overviewAiMessages.overview-ai-messages > .answer.ai-rich-content > p {
+  display: block !important;
+  width: auto !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 0 .55em !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai #overviewAiMessages.overview-ai-messages > .answer.ai-rich-content > p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Compact project identity: title, dates, progress, status and summary form one block. */
+html body[data-view="projects"] #projectsView.view.active > .workspace-header {
+  align-items: flex-start !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > .workspace-header > div:first-child {
+  min-width: 0 !important;
+  width: 100% !important;
+  flex: 1 1 100% !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > .workspace-header {
+  position: relative !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > .workspace-header > .header-actions {
+  position: absolute !important;
+  top: 10px !important;
+  right: 0 !important;
+  z-index: 2 !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > .workspace-header #projectTitle,
+html body[data-view="projects"] #projectsView.view.active > .workspace-header #projectHeroMeta {
+  max-width: calc(100% - 58px) !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > .workspace-header #projectTitle {
+  margin: 0 0 5px !important;
+  font-size: 26px !important;
+  line-height: 1.2 !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > .workspace-header #projectHeroMeta {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 8px 14px !important;
+  margin: 0 !important;
+  color: #71827d !important;
+  font-size: 13px !important;
+}
+
+.project-date-meta,
+.project-mini-progress,
+.project-status-dot {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.project-date-meta { gap: 5px !important; }
+.project-date-meta svg {
+  width: 14px !important;
+  height: 14px !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.6 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+.project-mini-progress { gap: 7px !important; }
+.project-mini-progress > i {
+  display: block !important;
+  width: 92px !important;
+  height: 6px !important;
+  overflow: hidden !important;
+  border-radius: 999px !important;
+  background: #e7ecea !important;
+}
+.project-mini-progress > i > b {
+  display: block !important;
+  height: 100% !important;
+  border-radius: inherit !important;
+  background: #35c996 !important;
+}
+.project-mini-progress > strong {
+  color: #24b986 !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+}
+
+.project-status-dot { gap: 6px !important; color: #61736d !important; }
+.project-status-dot > i {
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background: #42d2a2 !important;
+}
+.project-status-dot.paused > i { background: #f2bd45 !important; }
+.project-status-dot.done > i { background: #4d8ff7 !important; }
+
+html body[data-view="projects"] #projectsView.view.active > .workspace-header #projectHeroDesc {
+  display: -webkit-box !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 7px 0 0 !important;
+  overflow: hidden !important;
+  color: #73847f !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+  white-space: normal !important;
+  -webkit-box-orient: vertical !important;
+  text-overflow: ellipsis !important;
+  -webkit-line-clamp: 2 !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > .workspace-header #projectHeroDesc > strong {
+  color: #27332f !important;
+  font-weight: 800 !important;
+}
+
+html body[data-view="projects"] #overviewTab > .project-overview-card {
+  display: none !important;
+}
+
+/* Project AI: assistant answers read like a document, user prompts stay distinct. */
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai #overviewAiMessages.overview-ai-messages > p:not(.question),
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai #overviewAiMessages.overview-ai-messages > .answer {
+  align-self: stretch !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 8px 0 14px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #202825 !important;
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+  box-shadow: none !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai #overviewAiMessages.overview-ai-messages > .question {
+  align-self: flex-end !important;
+  width: fit-content !important;
+  max-width: 82% !important;
+  margin: 2px 0 8px !important;
+  padding: 9px 13px !important;
+  border-radius: 14px 14px 4px 14px !important;
+  background: #39c99a !important;
+  color: #fff !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai #overviewAiMessages.overview-ai-messages > .ai-pending {
+  align-self: flex-start !important;
+  width: 42px !important;
+  padding: 10px 0 !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai #overviewAiNewChatBtn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: 34px !important;
+  padding: 0 4px !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  color: #52615c !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai #overviewAiNewChatBtn:hover {
+  background: transparent !important;
+  color: #159b75 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai #overviewAiNewChatBtn:focus-visible,
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai #overviewAiNewChatBtn:active {
+  background: transparent !important;
+  color: #159b75 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai #overviewAiNewChatBtn svg {
+  width: 18px !important;
+  height: 18px !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.7 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+/* The AI rail is a distinct card instead of a full-height white strip. */
+@media (min-width:1181px) {
+  html body[data-view="projects"]:has(#overviewTab.detail-panel.active) #projectsView.view.active > aside.overview-ai,
+  html body[data-view="projects"]:has(#nodesTab.detail-panel.active) #projectsView.view.active > aside.overview-ai,
+  html body[data-view="projects"]:has(#linksTab.detail-panel.active) #projectsView.view.active > aside.overview-ai {
+    top: 12px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    left: auto !important;
+    width: 396px !important;
+    min-width: 396px !important;
+    max-width: 396px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 0 24px 28px !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    border-radius: 24px !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    z-index: 100000 !important;
+  }
+
+  html body[data-view="projects"]:has(#overviewTab.detail-panel.active) #projectsView.view.active > aside.overview-ai #overviewAiMessages,
+  html body[data-view="projects"]:has(#nodesTab.detail-panel.active) #projectsView.view.active > aside.overview-ai #overviewAiMessages,
+  html body[data-view="projects"]:has(#linksTab.detail-panel.active) #projectsView.view.active > aside.overview-ai #overviewAiMessages {
+    width: calc(100% + 24px) !important;
+    margin-right: -24px !important;
+  }
+
+  html body[data-view="projects"]:has(#overviewTab.detail-panel.active) #projectsView.view.active::before,
+  html body[data-view="projects"]:has(#nodesTab.detail-panel.active) #projectsView.view.active::before,
+  html body[data-view="projects"]:has(#linksTab.detail-panel.active) #projectsView.view.active::before {
+    content: "" !important;
+    display: block !important;
+    position: fixed !important;
+    z-index: 4 !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 420px !important;
+    background: #fafbfb !important;
+    pointer-events: none !important;
+  }
+
+  html.electron-shell body {
+    height: 100vh !important;
+    padding-top: 30px !important;
+    box-sizing: border-box !important;
+    background: #fafbfb !important;
+  }
+
+  html.electron-shell body::before {
+    content: "" !important;
+    position: fixed !important;
+    z-index: 2147483646 !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    height: 30px !important;
+    background: #fafbfb !important;
+    -webkit-app-region: drag !important;
+  }
+
+  html.electron-shell body > .electron-window-brand {
+    position: fixed !important;
+    z-index: 2147483647 !important;
+    top: 0 !important;
+    left: 8px !important;
+    height: 30px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    color: #24312d !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-app-region: drag !important;
+  }
+
+  html.electron-shell body > .electron-window-brand img {
+    width: 18px !important;
+    height: 18px !important;
+    display: block !important;
+    border-radius: 5px !important;
+    object-fit: contain !important;
+  }
+
+  html.electron-shell body > .app-shell {
+    height: calc(100vh - 30px) !important;
+    min-height: calc(100vh - 30px) !important;
+  }
+
+  /* Keep the content close to the slim desktop title bar. */
+  html.electron-shell body > .app-shell > .rail,
+  html.electron-shell body > .app-shell > .sidebar,
+  html.electron-shell body > .app-shell > .workspace {
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  html.electron-shell body[data-view="projects"] .sidebar {
+    padding-top: 8px !important;
+  }
+
+  html.electron-shell body[data-view="projects"] .sidebar .project-context {
+    padding-top: 6px !important;
+  }
+
+  html.electron-shell body[data-view="projects"]:has(#overviewTab.detail-panel.active) #projectsView.view.active,
+  html.electron-shell body[data-view="projects"]:has(#nodesTab.detail-panel.active) #projectsView.view.active,
+  html.electron-shell body[data-view="projects"]:has(#linksTab.detail-panel.active) #projectsView.view.active {
+    padding-top: 8px !important;
+  }
+
+  html.electron-shell body[data-view="projects"] #projectsView.view.active > .workspace-header {
+    padding-top: 2px !important;
+  }
+
+  html.electron-shell body[data-view="projects"]:has(#overviewTab.detail-panel.active) #projectsView.view.active > aside.overview-ai,
+  html.electron-shell body[data-view="projects"]:has(#nodesTab.detail-panel.active) #projectsView.view.active > aside.overview-ai,
+  html.electron-shell body[data-view="projects"]:has(#linksTab.detail-panel.active) #projectsView.view.active > aside.overview-ai {
+    top: 12px !important;
+    bottom: 42px !important;
+  }
+
+  html.electron-shell body[data-view="projects"]:has(#overviewTab.detail-panel.active) #projectsView.view.active::before,
+  html.electron-shell body[data-view="projects"]:has(#nodesTab.detail-panel.active) #projectsView.view.active::before,
+  html.electron-shell body[data-view="projects"]:has(#linksTab.detail-panel.active) #projectsView.view.active::before {
+    top: 30px !important;
+  }
+}
+
+html body.career-restored[data-view="career"] #careerList > .career-item.restored {
+  background: #fff !important;
+}
+
+/* User-provided rail artwork, with a dedicated selected and unselected asset. */
+html body .rail .rail-icon[data-view] {
+  width: 48px !important;
+  min-width: 48px !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  border-radius: 15px !important;
+}
+
+html body .rail .rail-icon[data-view] .rail-state-icon {
+  display: block !important;
+  width: 27px !important;
+  height: 27px !important;
+  object-fit: contain !important;
+  pointer-events: none !important;
+}
+
+html body .rail .rail-icon[data-view] .rail-state-active,
+html body .rail .rail-icon[data-view].active .rail-state-idle {
+  display: none !important;
+}
+
+html body .rail .rail-icon[data-view].active .rail-state-active {
+  display: block !important;
+}
+
+html body .rail .rail-icon[data-view].active {
+  background: #48cfa4 !important;
+}
+
+/* Project AI composer: white rounded input card with a clear two-row hierarchy. */
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-input,
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-input:hover,
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-input:focus-within {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: minmax(52px, 1fr) 36px !important;
+  width: 100% !important;
+  height: 126px !important;
+  min-height: 126px !important;
+  padding: 15px 12px 10px 16px !important;
+  border: 1px solid #e5e9e7 !important;
+  border-radius: 22px !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  z-index: 100001 !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-input > textarea,
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-input > textarea:hover,
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-input > textarea:focus,
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-input > textarea:focus-visible {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  resize: none !important;
+  overflow: auto !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #26332f !important;
+  font: inherit !important;
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-input > textarea::placeholder {
+  color: #a0aaa6 !important;
+  opacity: 1 !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-compose-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 36px !important;
+  overflow: visible !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-compose-tools {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  color: #8b928f !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-compose-tools > span {
+  display: grid !important;
+  place-items: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  font-size: 22px !important;
+  line-height: 1 !important;
+  flex: 0 0 20px !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-compose-tools svg {
+  width: 18px !important;
+  height: 18px !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.5 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-tool-globe {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  background: #f0f1f0 !important;
+  color: #b5bab7 !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-compose-mode {
+  margin-left: auto !important;
+  padding: 0 9px !important;
+  color: #5f6965 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-input #overviewAiSendBtn {
+  width: 36px !important;
+  min-width: 36px !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: #43cf9f !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 36px !important;
+  margin: 0 !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-input #overviewAiSendBtn .send-icon {
+  display: block !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin: 0 !important;
+  transform: none !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+html body[data-view="projects"] #projectsView.view.active > aside.overview-ai .overview-ai-input #overviewAiSendBtn:hover {
+  background: #2dbf8e !important;
+  transform: none !important;
+}
+
+html body #profileDialog #profileEmailInput[readonly] {
+  cursor: default !important;
+  color: #526c7b !important;
+  background: #edf6f3 !important;
+}
+
+/* Keep every modal backdrop visually consistent, including the area below the native title controls. */
+html body dialog::backdrop {
+  background: rgba(35, 48, 45, .30) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+
+/* Settings navigation uses one continuous light-gray rail through the footer. */
+html body #profileDialog .profile-card{--settings-nav-width:240px!important}
+html body #profileDialog .settings-layout{grid-template-columns:var(--settings-nav-width) minmax(0,1fr)!important}
+html body #profileDialog .settings-nav{background:#f1f3f3!important}
+html body #profileDialog .profile-actions{
+  background:#fff!important;background-image:none!important;
+}
+@media(max-width:700px){
+  html body #profileDialog .profile-card{--settings-nav-width:150px!important}
+}
+
+
+/* Stable project settings entry and complete settings surfaces. */
+html.electron-shell body[data-view="projects"] .app-shell > .rail{
+  height:calc(100dvh - 30px)!important;
+  min-height:calc(100dvh - 30px)!important;
+  max-height:calc(100dvh - 30px)!important;
+}
+html body #profileDialog .profile-card{height:min(760px,90vh)!important}
+html body #profileDialog .settings-layout{flex:1 1 auto!important;min-height:0!important;overflow:hidden!important}
+html body #profileDialog .settings-nav{height:100%!important;min-height:100%!important;background:#f1f3f3!important}
+html body #profileDialog .settings-content{min-height:0!important;overflow:auto!important}
+html body #profileDialog .profile-actions{flex:0 0 auto!important;background:#fff!important;background-image:none!important}
+
+/* Declarative plugins: manifests can add safe project prompts and scoped visual tokens. */
+html body #profileDialog .settings-plugin-toolbar{display:flex!important;align-items:center!important;margin:22px 0 12px!important}
+html body #profileDialog #settingsPluginImport{height:46px!important;padding:0 20px!important;border:0!important;border-radius:12px!important;background:#42cfa1!important;color:#fff!important;font-weight:800!important}
+html body #profileDialog .settings-plugin-status{min-height:22px!important;margin:0 0 12px!important;color:#239b77!important;font-size:14px!important}
+html body #profileDialog .settings-plugin-status.error{color:#ef5350!important}
+html body #profileDialog .settings-plugin-list{display:grid!important;gap:12px!important}
+html body #profileDialog .settings-plugin-empty{padding:24px!important;border-radius:14px!important;background:#f4f6f6!important;color:#72827d!important}
+html body #profileDialog .settings-plugin-card{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;padding:16px 18px!important;border:1px solid #e6ecea!important;border-radius:14px!important;background:#fff!important}
+html body #profileDialog .settings-plugin-card>div:first-child{min-width:0!important}
+html body #profileDialog .settings-plugin-heading{display:flex!important;align-items:center!important;gap:10px!important}
+html body #profileDialog .settings-plugin-heading strong{font-size:16px!important;color:#17251f!important}
+html body #profileDialog .settings-plugin-heading span{padding:3px 7px!important;border-radius:999px!important;background:#eef7f4!important;color:#49806e!important;font-size:11px!important;font-weight:800!important}
+html body #profileDialog .settings-plugin-card p{margin:5px 0 0!important;font-size:13px!important;color:#74837e!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+html body #profileDialog .settings-plugin-controls{display:flex!important;align-items:center!important;gap:12px!important;flex:0 0 auto!important}
+html body #profileDialog .settings-plugin-switch{display:flex!important;align-items:center!important;gap:8px!important;color:#53645e!important;font-size:13px!important}
+html body #profileDialog .settings-plugin-switch input{accent-color:#42cfa1!important}
+html body #profileDialog .settings-plugin-remove{padding:8px 12px!important;border:0!important;border-radius:9px!important;background:#fff0f0!important;color:#ef5350!important;font-weight:800!important}
+html body #profileDialog .settings-plugin-guide{margin-top:18px!important;padding:14px 16px!important;border-radius:12px!important;background:#f4f6f6!important;color:#53645e!important}
+html body #profileDialog .settings-plugin-guide summary{cursor:pointer!important;font-weight:800!important}
+html body #profileDialog .settings-plugin-guide pre{max-height:230px!important;margin:14px 0 0!important;padding:14px!important;overflow:auto!important;border-radius:10px!important;background:#fff!important;color:#375148!important;font:12px/1.6 Consolas,monospace!important;white-space:pre-wrap!important}
+html body[data-view="projects"] .plugin-project-actions{display:flex!important;align-items:center!important;gap:14px!important;margin:4px 0 18px!important;padding:12px 16px!important;border-radius:14px!important;background:#fff!important}
+html body[data-view="projects"] .plugin-project-actions[hidden]{display:none!important}
+html body[data-view="projects"] .plugin-project-actions-label{flex:0 0 auto!important;color:#71807b!important;font-size:13px!important;font-weight:800!important}
+html body[data-view="projects"] .plugin-project-actions-list{display:flex!important;align-items:center!important;gap:10px!important;min-width:0!important;overflow-x:auto!important;scrollbar-width:none!important}
+html body[data-view="projects"] .plugin-project-actions-list::-webkit-scrollbar{display:none!important}
+html body[data-view="projects"] .plugin-project-action{height:36px!important;padding:0 15px!important;border:0!important;border-radius:var(--plugin-action-radius,12px)!important;background:var(--plugin-action-surface,#f2f3f3)!important;color:var(--plugin-action-accent,#20a97f)!important;font-weight:800!important;white-space:nowrap!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--plugin-action-accent,#42d3a1) 24%,transparent)!important}
+html body[data-view="projects"] .plugin-project-action:hover{transform:none!important;filter:brightness(.98)!important}
+
+/* Remove the inherited card gap so the gray rail meets the white footer. */
+html body #profileDialog .profile-card{gap:0!important}
+
+/* Compact plugin enable switch, isolated from the app-wide checkbox style. */
+html body #profileDialog .settings-plugin-switch>span{white-space:nowrap!important}
+html body #profileDialog .settings-plugin-switch input[type="checkbox"]{
+  appearance:none!important;-webkit-appearance:none!important;position:relative!important;
+  width:44px!important;min-width:44px!important;height:24px!important;min-height:24px!important;
+  margin:0!important;padding:0!important;border:0!important;border-radius:999px!important;
+  background:#cbd6d2!important;box-shadow:none!important;cursor:pointer!important;
+}
+html body #profileDialog .settings-plugin-switch input[type="checkbox"]::after{
+  content:""!important;position:absolute!important;left:3px!important;top:3px!important;
+  width:18px!important;height:18px!important;border-radius:50%!important;background:#fff!important;
+  box-shadow:0 1px 4px rgba(36,67,57,.18)!important;transform:none!important;transition:left .18s ease!important;
+}
+html body #profileDialog .settings-plugin-switch input[type="checkbox"]:checked{background:#42cfa1!important}
+html body #profileDialog .settings-plugin-switch input[type="checkbox"]:checked::after{left:23px!important}
+
+
+/* Latest settings rail and career mastery alignment. */
+html body #profileDialog .profile-actions{
+  background:linear-gradient(to right,#f1f3f3 0 var(--settings-nav-width),#fff var(--settings-nav-width) 100%)!important;
+  background-image:linear-gradient(to right,#f1f3f3 0 var(--settings-nav-width),#fff var(--settings-nav-width) 100%)!important;
+}
+html body #profileDialog .profile-logout{position:relative!important;z-index:1!important}
+
+html body.career-restored #careerDetailDialog .career-dialog-basic-grid{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  align-items:end!important;
+}
+html body.career-restored #careerDetailDialog .career-dialog-basic-grid>label:first-child{
+  grid-column:1/-1!important;
+}
+html body.career-restored #careerDetailDialog .career-dialog-basic-grid>label:nth-child(2),
+html body.career-restored #careerDetailDialog .career-dialog-basic-grid>.career-mastery-field{
+  grid-column:auto!important;
+  min-width:0!important;
+}
+html body.career-restored #careerDetailDialog .career-mastery-choices{
+  min-height:56px!important;
+}
+html body.career-restored #careerDetailDialog .career-mastery-view{
+  display:flex!important;align-items:center!important;height:56px!important;padding:0 18px!important;
+  border-radius:14px!important;background:#e9eef3!important;box-sizing:border-box!important;
+}
+
+html body.career-restored #careerView #careerList .career-card-footer{
+  display:flex!important;align-items:center!important;gap:9px!important;
+}
+html body.career-restored #careerView #careerList .career-card-footer .career-card-mastery{
+  align-self:center!important;margin:0!important;flex:0 0 auto!important;
+}
+html body.career-restored #careerView #careerList .career-card-footer .career-card-rating{
+  flex:1 1 auto!important;
+}
+html body.career-restored #careerView #careerList .career-card-footer.no-rating .career-card-mastery{
+  margin-right:auto!important;
+}
+@media(max-width:860px){
+  html body.career-restored #careerDetailDialog .career-dialog-basic-grid{grid-template-columns:1fr!important}
+  html body.career-restored #careerDetailDialog .career-dialog-basic-grid>label:first-child{grid-column:auto!important}
+}
+
+
+/* User data export and login import controls. */
+html body #profileDialog [data-settings-panel="personal"]{position:relative!important}
+html body #profileDialog .profile-export-button{
+  position:absolute!important;right:0!important;top:0!important;height:44px!important;padding:0 18px!important;
+  border:0!important;border-radius:12px!important;background:#42cfa1!important;color:#fff!important;
+  font-weight:850!important;box-shadow:none!important;
+}
+html body #profileDialog .profile-export-button:hover{transform:none!important;background:#31bf91!important}
+html body #authDialog .auth-field input,
+html body #authDialog .auth-field input:hover,
+html body #authDialog .auth-field input:focus,
+html body #authDialog .auth-field input:focus-visible{background:#eef0f1!important}
+html body #authDialog .auth-dialog-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important;width:100%!important}
+html body #authDialog .auth-dialog-actions .auth-import,
+html body #authDialog .auth-dialog-actions .auth-primary{
+  display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;
+  height:56px!important;min-height:56px!important;margin:0!important;padding:0 18px!important;border-radius:14px!important;
+  font:inherit!important;font-weight:900!important;box-shadow:none!important;cursor:pointer!important;
+}
+html body #authDialog .auth-dialog-actions .auth-import{
+  border:2px solid #a9ead2!important;background:#f2fbf7!important;color:#21b689!important;
+}
+html body #authDialog .auth-dialog-actions .auth-primary{
+  border:2px solid #42cfa1!important;background:#42cfa1!important;color:#fff!important;
+}
+html body #authDialog .auth-dialog-actions :is(.auth-import,.auth-primary):hover{transform:none!important;filter:brightness(.98)!important}
+
+
+/* Account merge import beside export. */
+html body #profileDialog .profile-transfer-actions{
+  position:absolute!important;right:0!important;top:0!important;display:flex!important;align-items:center!important;gap:10px!important;
+}
+html body #profileDialog .profile-transfer-actions :is(.profile-import-button,.profile-export-button){
+  position:static!important;height:44px!important;padding:0 17px!important;border-radius:12px!important;font-weight:850!important;box-shadow:none!important;
+}
+html body #profileDialog .profile-transfer-actions .profile-import-button{
+  border:2px solid #a9ead2!important;background:#f2fbf7!important;color:#21b689!important;
+}
+html body #profileDialog .profile-transfer-actions .profile-export-button{
+  border:2px solid #42cfa1!important;background:#42cfa1!important;color:#fff!important;
+}
+html body #profileDialog .profile-transfer-actions :is(.profile-import-button,.profile-export-button):hover{transform:none!important;filter:brightness(.98)!important}
+
+
+/* 2026-09-17 requested transfer control polish. */
+html body #profileDialog .profile-transfer-actions .profile-export-button,
+html body #profileDialog .profile-transfer-actions .profile-export-button:hover,
+html body #profileDialog .profile-transfer-actions .profile-export-button:focus-visible{
+  border:2px solid #202426!important;background:#202426!important;color:#fff!important;filter:none!important;transform:none!important;
+}
+html body #authDialog .auth-dialog-actions .auth-import,
+html body #authDialog .auth-dialog-actions .auth-import:hover,
+html body #authDialog .auth-dialog-actions .auth-import:focus-visible{
+  border:0!important;background:#f2fbf7!important;color:#21b689!important;box-shadow:none!important;transform:none!important;
+}
+
+
+/* The desktop title bar owns 30px; every rail must use the app shell's remaining height. */
+html.electron-shell body.career-restored[data-view="career"] > .app-shell > .rail{
+  position:relative!important;height:100%!important;min-height:0!important;max-height:100%!important;overflow:hidden!important;
+}

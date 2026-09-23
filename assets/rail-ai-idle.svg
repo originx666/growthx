@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <defs><linearGradient id="g" x1="42" y1="22" x2="248" y2="270" gradientUnits="userSpaceOnUse"><stop stop-color="#a7a7a7"/><stop offset="1" stop-color="#cecece"/></linearGradient></defs>
+  <path fill="url(#g)" d="M151 79c-8-35 14-57 58-55 0 34-21 57-58 55Zm-7 1c-4-31-29-49-65-43 5 31 27 48 65 43Z"/>
+  <path fill="url(#g)" fill-rule="evenodd" d="M35 196c0-70 49-123 115-123s115 53 115 123c0 58-42 82-115 82S35 254 35 196Zm78-3c0-19 8-34 18-34s18 15 18 34-8 34-18 34-18-15-18-34Zm58 0c0-19 8-34 18-34s18 15 18 34-8 34-18 34-18-15-18-34Z" clip-rule="evenodd"/>
+</svg>

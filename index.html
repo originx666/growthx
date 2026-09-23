@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>歌若思</title>
+    <link rel="stylesheet" href="./styles.css?v=20260921-action-icon-v47" />
+</head>
+  <body class="career-restored" data-view="projects">
+    <div class="app-shell">
+      <nav class="rail">
+        <div class="rail-avatar">
+          <svg viewBox="0 0 64 64" role="img" aria-label="歌若思">
+            <circle cx="32" cy="32" r="26" fill="#ECFFF6" stroke="#48D18F" stroke-width="4" />
+            <circle cx="32" cy="32" r="18" fill="#41D184" />
+            <path d="M19 25c5-5 13-6 19-2 4 3 7 7 8 12-5-3-10-4-15-3-5 1-9 4-12 8-2-5-2-11 0-15Z" fill="#21C968" />
+            <path d="M24 19c2 4 5 7 9 9M41 20c-3 3-4 7-4 11M23 43c4-3 8-5 14-5" fill="none" stroke="#076D55" stroke-width="3" stroke-linecap="round" />
+            <circle cx="32" cy="32" r="27" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="9 8" opacity=".9" />
+          </svg>
+        </div>
+        <button class="rail-icon active" data-view="projects" title="项目制学习" aria-label="项目制学习">
+          <img class="rail-state-icon rail-state-idle" src="./assets/rail-project-idle.png" alt="" aria-hidden="true">
+          <img class="rail-state-icon rail-state-active" src="./assets/rail-project-active.png" alt="" aria-hidden="true">
+        </button><button class="rail-icon" data-view="career" title="学习生涯数据" aria-label="学习生涯数据">
+          <img class="rail-state-icon rail-state-idle" src="./assets/rail-career-idle.png" alt="" aria-hidden="true">
+          <img class="rail-state-icon rail-state-active" src="./assets/rail-career-active.png" alt="" aria-hidden="true">
+        </button>
+        <button class="rail-icon rail-ai-consult" data-view="ai" title="AI 咨询" aria-label="AI 咨询">
+          <img class="rail-state-icon rail-state-idle" src="./assets/rail-ai-idle.png" alt="" aria-hidden="true">
+          <img class="rail-state-icon rail-state-active" src="./assets/rail-ai-idle.png" alt="" aria-hidden="true">
+        </button>
+        <button class="rail-icon rail-profile-button" id="profileButton" type="button" title="设置" aria-label="设置">
+          <span>创</span>
+        </button>
+      </nav>
+      <aside class="sidebar">
+        <section class="side-context project-context">
+          <div class="context-title">
+            <span>项目空间</span>
+            <small>Project Board</small>
+            <div class="context-actions">
+              <button id="newProjectBtn" title="新建项目">＋</button>
+              <button id="newFolderBtn" title="新建文件夹">
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M3 6.2c0-.9.7-1.6 1.6-1.6h3l1.4 1.6h6.4c.9 0 1.6.7 1.6 1.6v6.6c0 .9-.7 1.6-1.6 1.6H4.6c-.9 0-1.6-.7-1.6-1.6V6.2z"></path>
+                </svg>
+              </button>
+              <button id="importProjectPackageBtn" title="导入项目包" aria-label="导入项目包">
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M10 3v9m0 0 3.4-3.4M10 12 6.6 8.6M4 13.5v1.8c0 .9.8 1.7 1.7 1.7h8.6c.9 0 1.7-.8 1.7-1.7v-1.8"></path>
+                </svg>
+              </button>
+              <input id="projectPackageInput" type="file" accept=".geruosi,.json,application/json" hidden />
+            </div>
+          </div>
+          <div class="search-box">
+            <span>⌕</span>
+            <input id="projectSearch" type="search" placeholder="搜索项目" />
+          </div>
+          <div id="projectStatusStrip" class="status-strip"></div>
+
+          <nav id="projectTree" class="project-tree"></nav>
+        </section>
+
+        <section class="side-context career-context">
+          <div class="context-title">
+            <span>学习档案</span>
+            <small>Learning Record</small>
+          </div>
+          <div class="career-side-card">
+            <strong id="sideCareerCount">0</strong>
+            <span>已沉淀的学习记录</span>
+          </div>
+          <nav class="side-list">
+            <button data-side-type="domains">领域</button>
+            <button data-side-type="skills">技能</button>
+            <button data-side-type="readings">阅读</button>
+            <button data-side-type="courses">课程</button>
+            <button data-side-type="certificates">证书</button>
+          </nav>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <section id="projectsView" class="view active">
+          <header class="workspace-header">
+            <div>
+              <h2 id="projectTitle">项目制学习看板</h2>
+              <p id="projectHeroMeta" class="project-hero-meta"></p>
+              <p id="projectHeroDesc" class="project-hero-desc"></p>
+            </div>
+            <div class="header-actions">
+              <button id="toggleEditBtn" class="ghost-button" title="切换编辑模式">编辑</button>
+            </div>
+          </header>
+
+          <div id="emptyProjectState" class="empty-state hidden">
+            <div class="empty-project-visual" aria-hidden="true">
+              <div class="empty-project-icon"><svg viewBox="0 0 160 160" role="img" aria-label="启程学习的火箭"><defs><linearGradient id="rocketHull" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#effff8"/><stop offset="1" stop-color="#9ee8cc"/></linearGradient><linearGradient id="rocketExhaust" x2="0" y2="1"><stop stop-color="#ffd786"/><stop offset="1" stop-color="#ff9d46"/></linearGradient></defs><g transform="rotate(35 80 80)" stroke-width="3"><path d="M65 106Q58 125 80 144Q102 125 95 106" fill="url(#rocketExhaust)" stroke="none"/><path d="M74 109Q69 121 80 132Q91 121 86 109" fill="#fff1bc" stroke="none"/><path d="M61 74Q37 86 42 114L65 102M99 74Q123 86 118 114L95 102" fill="#32c394" stroke="#159b77"/><path d="M60 100C50 66 60 35 80 18C100 35 110 66 100 100Q80 112 60 100Z" fill="url(#rocketHull)" stroke="#159b77"/><path d="M65 36Q80 13 95 36" fill="#29bd8c" stroke="none"/><circle cx="80" cy="65" r="13" fill="#0c9f81" stroke="#fff" stroke-width="4"/><circle cx="77" cy="62" r="5" fill="#9af0d7" stroke="none"/><path d="M62 99Q80 105 98 99" fill="none" stroke="#159b77"/><path d="M80 93V113" stroke="#159b77"/></g></svg></div>
+            </div>
+            <div class="empty-project-copy">
+              <span class="empty-project-eyebrow">YOUR FIRST LEARNING PROJECT</span>
+              <h3>把想学的事，变成真正完成的项目</h3>
+              <p>从一个清晰主题开始，拆解学习节点、关联资料与成果，让每一步成长都看得见。</p>
+              <div class="empty-project-steps" aria-label="项目创建步骤"><span><b>01</b> 定义主题</span><span><b>02</b> 拆解节点</span><span><b>03</b> 沉淀成果</span></div>
+              <button id="emptyNewProjectBtn" type="button"><span>创建第一个项目</span><img src="./assets/arrow-right-white.svg" alt="" aria-hidden="true"></button>
+              <small>大约 1 分钟即可开始</small>
+            </div>
+          </div>
+
+          <article id="projectDetail" class="project-detail">
+            <div class="detail-tabs">
+              <button class="detail-tab active" data-tab="overview">
+                <svg class="tab-icon" viewBox="0 0 18 18" aria-hidden="true">
+                  <rect x="2.5" y="3.5" width="13" height="11" rx="1.8"></rect>
+                  <path d="M5.5 11.5V8.7M9 11.5V6.5M12.5 11.5V9.4"></path>
+                </svg>
+                <span>画布</span>
+              </button>
+              <button class="detail-tab" data-tab="nodes">
+                <svg class="tab-icon" viewBox="0 0 18 18" aria-hidden="true">
+                  <path d="M9 3.2v3.1M5 8.1 9 6.3l4 1.8M5 8.1v3.2M13 8.1v3.2"></path>
+                  <circle cx="9" cy="3.2" r="1.6"></circle>
+                  <circle cx="5" cy="12.2" r="1.6"></circle>
+                  <circle cx="13" cy="12.2" r="1.6"></circle>
+                </svg>
+                <span>节点</span>
+              </button>
+              <button class="detail-tab" data-tab="links">
+                <svg class="tab-icon" viewBox="0 0 18 18" aria-hidden="true">
+                  <path d="M7.2 11.8 5.8 13.2a2.7 2.7 0 0 1-3.8-3.8l2.2-2.2A2.7 2.7 0 0 1 8 7M10.8 6.2l1.4-1.4A2.7 2.7 0 0 1 16 8.6l-2.2 2.2A2.7 2.7 0 0 1 10 11M6.5 11.5l5-5"></path>
+                </svg>
+                <span>关联</span>
+              </button>
+            </div>
+
+            <section id="overviewTab" class="detail-panel active">
+              <div class="project-overview-card">
+                <div class="overview-progress-bg" id="overviewProgressBg"></div>
+                <div class="overview-read">
+                  <div class="donut-progress" id="donutProgress">
+                    <span id="donutPercent">0%</span>
+                  </div>
+                  <div class="overview-copy">
+                    <h3 id="overviewHeadline">距离项目结束还有 0 天...</h3>
+                    <p id="overviewSummary"></p>
+                    <div class="overview-facts">
+                      <span id="overviewRatingText"></span>
+                      <span id="overviewTagText"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="overview-topline">
+                  <div>
+                    <span id="overviewPercent">0%</span>
+                    <small id="overviewRemaining">距离计划结束还有 0 天</small>
+                  </div>
+                </div>
+                <div class="form-grid">
+                <label>
+                  项目状态
+                  <input id="projectStatus" type="hidden" value="进行中" />
+                  <div id="projectStatusChoices" class="modal-choice-group inline-choice-group"></div>
+                </label>
+                <label>
+                  项目评价
+                  <div id="projectRatingStars" class="rating-stars" aria-label="项目评价"></div>
+                </label>
+                <label>
+                  所属文件夹
+                  <input id="projectFolder" type="hidden" value="" />
+                  <div id="projectFolderChoices" class="modal-choice-group inline-choice-group"></div>
+                </label>
+                <label>
+                  开始时间
+                  <input id="projectStart" class="date-field" type="text" placeholder="选择日期" readonly />
+                </label>
+                <label>
+                  计划结束时间
+                  <input id="projectPlanEnd" class="date-field" type="text" placeholder="选择日期" readonly />
+                </label>
+                <label>
+                  实际结束时间
+                  <input id="projectActualEnd" class="date-field" type="text" placeholder="选择日期" readonly />
+                </label>
+                </div>
+                <section class="tag-editor">
+                  <div class="section-title">
+                    <h3>项目标签</h3>
+                    <button id="newTagBtn" class="inline-button">新建标签</button>
+                  </div>
+                  <div id="projectTags" class="tag-list"></div>
+                  <div id="tagLibrary" class="tag-library"></div>
+                </section>
+              </div>
+
+              <div id="projectCanvasLibrary" class="project-canvas-library"></div>
+
+              <div class="progress-row">
+                <div>
+                  <span>项目进度</span>
+                  <strong id="progressText">0%</strong>
+                </div>
+                <div class="progress-track"><div id="progressBar"></div></div>
+                <p id="remainingTime" class="muted"></p>
+              </div>
+
+              <label class="wide-label">
+                项目简介
+              <textarea id="projectDescription" rows="5" maxlength="500"></textarea>
+              </label>
+            </section>
+
+            <section id="nodesTab" class="detail-panel">
+              <div id="nodeMap" class="node-map"></div>
+            </section>
+
+            <section id="linksTab" class="detail-panel">
+              <div class="overview-secondary relation-overview-moved">
+                <section class="overview-relations">
+                  <h3>关联内容</h3>
+                  <div id="overviewRelationSummary"></div>
+                </section>
+              </div>
+              <div class="relation-grid">
+                <section>
+                  <h3>关联技能</h3>
+                  <div id="relSkills" class="relation-picker"></div>
+                </section>
+                <section>
+                  <h3>关联领域</h3>
+                  <div id="relDomains" class="relation-picker"></div>
+                </section>
+                <section>
+                  <h3>关联学习成果</h3>
+                  <div id="relAchievements" class="relation-picker"></div>
+                </section>
+                <section>
+                  <h3>关联内容</h3>
+                  <div id="projectLinks" class="link-list"></div>
+                  <button id="addProjectLinkBtn" class="inline-button">添加链接</button>
+                </section>
+              </div>
+            </section>
+          </article>
+          <aside class="overview-ai">
+            <div class="overview-ai-heading">
+              <h3>AI 问答</h3>
+              <button id="overviewAiNewChatBtn" type="button" title="新建对话" aria-label="新建对话">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 6.5h11a2.5 2.5 0 0 1 2.5 2.5v7a2.5 2.5 0 0 1-2.5 2.5H9l-4 2.3v-4.1A2.4 2.4 0 0 1 3 14.3V9A2.5 2.5 0 0 1 5.5 6.5"></path>
+                  <path d="M18.5 3v6M15.5 6h6"></path>
+                </svg>
+                <span>新建对话</span>
+              </button>
+            </div>
+            <div id="overviewAiMessages" class="overview-ai-messages">
+              <p>我可以基于当前项目、节点和关联内容，帮你继续拆解、找资源或复盘。</p>
+            </div>
+            <div class="overview-ai-input">
+              <div id="overviewAiAttachments" class="overview-ai-attachments"></div>
+              <textarea id="overviewAiInput" rows="2" placeholder="使用 AI 处理各种任务..."></textarea>
+              <div class="overview-ai-compose-footer">
+                <button id="overviewAiAttachBtn" class="overview-ai-attach" type="button" aria-label="上传文件或截图" title="上传文件或截图">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+                </button>
+                <input id="overviewAiFileInput" type="file" accept="image/*,.txt,.md,.csv,.json,.xml,.log,.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx" multiple hidden>
+                <button id="overviewAiSendBtn" type="button" aria-label="发送">
+                  <svg class="send-icon overview-ai-send-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 18V6m-5 5 5-5 5 5"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+
+        <section id="careerView" class="view career-restored-view">
+          <div class="career-restored-shell">
+            <main class="career-restored-main">
+              <header class="workspace-header career-hero">
+                <div>
+                  <h2>你好！<span>创想家...</span></h2>
+                  <p id="careerSummary" class="career-summary"></p>
+                </div>
+                <div class="header-actions career-hidden-actions">
+                  <button id="toggleCareerEditBtn" class="ghost-button" title="切换编辑模式">编辑</button>
+                  <button id="careerAssistantBtn" class="ghost-button">AI 辅助</button>
+                </div>
+              </header>
+
+              <section class="career-dashboard restored-journey-wrap">
+                <div class="journey">
+                  <div class="journey-head">
+                    <h3 id="journeyYear">2025</h3>
+                  </div>
+                  <div class="mountain">
+                    <div class="hill-layer hill-back"></div>
+                    <div class="hill-layer hill-mid"></div>
+                    <div class="hill-layer hill-front"></div>
+                    <div id="journeyPoints" class="journey-points"></div>
+                  </div>
+                </div>
+              </section>
+
+              <div class="career-tabs-row">
+                <div class="career-tabs">
+                  <button class="career-tab active" data-type="domains">领域</button>
+                  <button class="career-tab" data-type="skills">技能</button>
+                  <button class="career-tab" data-type="readings">阅读</button>
+                  <button class="career-tab" data-type="courses">课程</button>
+                  <button class="career-tab" data-type="certificates">证书</button>
+                </div>
+                <button id="newCareerItemBtn" class="career-create-square" type="button" aria-label="新增学习成果" title="新增学习成果"><span aria-hidden="true">+</span></button>
+              </div>
+
+              <section class="data-board career-restored-board">
+                <div class="data-list">
+                  <div class="section-title restored-section-title">
+                    <h3 id="careerTypeTitle">领域</h3>
+                  </div>
+                  <div id="careerList"></div>
+                </div>
+                <div id="abilityGrid" class="ability-grid hidden"></div>
+                <form id="careerForm" class="data-editor hidden" aria-hidden="true">
+                  <label>名称<input id="careerName" type="text" /></label>
+                  <label id="careerRatingWrap">评分<input id="careerRating" type="hidden" value="3" /><div id="careerRatingStars" class="modal-rating"></div></label>
+                  <label>介绍 / 评论<textarea id="careerNote" rows="5"></textarea></label>
+                  <label>经历记录<textarea id="careerExperiences" rows="4"></textarea></label>
+                  <label>相关链接<input id="careerLinks" type="text" placeholder="多个链接用逗号分隔" /></label>
+                  <div class="age-line" id="careerAge"></div>
+                  <div id="careerRelations" class="relation-picker compact"></div>
+                  <div class="form-actions"><button type="submit">保存</button><button id="deleteCareerItemBtn" type="button" class="danger">删除</button></div>
+                </form>
+              </section>
+            </main>
+
+            <aside class="career-ai-panel">
+              <div class="career-ai-heading">
+                <h3>AI 问答</h3>
+                <button id="careerAiNewChatBtn" type="button" title="新建对话" aria-label="新建对话">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5.5 5.5h13a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4.5 3v-3H5.5a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Z"></path>
+                    <path d="M12 8.5v6M9 11.5h6"></path>
+                  </svg>
+                  <span>新对话</span>
+                </button>
+              </div>
+              <div id="careerAssistantOutput" class="career-ai-output">
+                <div class="career-ai-message">我可以基于当前项目、节点和关联内容，帮你继续拆解、找资源或复盘。</div>
+              </div>
+              <div class="career-ai-compose">
+                <input id="careerAssistantInput" type="text" placeholder="输入你想问的问题" />
+                <button id="careerAssistantSendBtn" type="button" aria-label="发送">
+                  <svg class="send-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 12h13.5"></path>
+                    <path d="M13 6.5 18.5 12 13 17.5"></path>
+                    <path d="M5.5 5.5 20 12 5.5 18.5 8.5 12 5.5 5.5Z"></path>
+                  </svg>
+                </button>
+              </div>
+            </aside>
+          </div>
+          <button id="addJourneyBtn" type="button" class="hidden">新增</button>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="projectWizard" class="modal">
+      <form method="dialog" class="modal-card project-wizard-card">
+        <div class="wizard-header">
+          <h2>新建项目</h2>
+          <p>在思维导图中直接编辑项目主题和子项目，键盘回车新建子项目，Delete 删除子项目。</p>
+        </div>
+        <section id="wizardMindSection" class="wizard-mind-section" aria-label="项目思维导图">
+          <div id="wizardMindMap" class="wizard-mind-map"></div>
+        </section>
+        <input id="wizardName" type="hidden" />
+        <input id="wizardNodes" type="hidden" />
+        <input id="wizardEnd" type="hidden" />
+        <div class="form-actions wizard-actions">
+          <button id="createProjectConfirm" type="button">创建</button>
+          <button type="button" class="secondary" data-close-modal>取消</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="projectWizardLegacy" class="modal legacy-project-wizard">
+      <form method="dialog" class="modal-card project-wizard-card">
+        <h2>新建项目</h2>
+        <label>
+          项目主题
+          <input id="wizardName" type="text" placeholder="例如：建立个人知识管理系统" />
+        </label>
+        <label>
+          初始节点
+          <textarea id="wizardNodes" rows="5" placeholder="每行一个节点，例如：&#10;明确目标&#10;收集资料&#10;完成作品"></textarea>
+        </label>
+        <label>
+          计划结束时间
+          <input id="wizardEnd" class="date-field" type="text" placeholder="选择日期" readonly />
+        </label>
+        <div class="form-actions">
+          <button id="createProjectConfirm" type="button">创建</button>
+          <button type="button" class="secondary" data-close-modal>取消</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="folderDialog" class="modal">
+      <form method="dialog" class="modal-card folder-dialog-card">
+        <h2 id="folderDialogTitle">新建文件夹</h2>
+        <label>
+          文件夹名称
+          <input id="folderNameInput" type="text" maxlength="24" placeholder="例如：个人成长" />
+        </label>
+        <div class="form-actions">
+          <button id="saveFolderBtn" type="button">保存</button>
+          <button type="button" class="secondary" data-close-modal>取消</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="confirmDialog" class="modal">
+      <form method="dialog" class="modal-card small">
+        <h2 id="confirmTitle">确认删除</h2>
+        <p id="confirmMessage">删除后无法恢复。</p>
+        <div class="form-actions">
+          <button id="confirmOk" type="button" class="danger">删除</button>
+          <button type="button" class="secondary" data-close-modal>取消</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="projectEditDialog" class="modal">
+      <form method="dialog" class="modal-card project-edit-card">
+        <h2 class="project-edit-title"><span class="project-edit-title-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="project-edit-title-glyph" d="M7 2.5h7.4L19.5 7v12.5a2 2 0 0 1-2 2H7a2.5 2.5 0 0 1-2.5-2.5V5A2.5 2.5 0 0 1 7 2.5Z"></path><path class="project-edit-title-detail" d="M14.2 2.9V7h4.5M8.5 10.5h7M8.5 14h7M8.5 17.5h4.5"></path></svg></span>编辑项目</h2>
+        <div class="edit-grid">
+          <label class="project-edit-field project-edit-name-field">
+            项目名称
+            <span class="project-edit-field-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"></path></svg></span>
+            <input id="editProjectName" type="text" />
+          </label>
+          <label>
+            项目状态
+            <input id="editProjectStatus" type="hidden" value="进行中" />
+            <div id="editProjectStatusChoices" class="modal-choice-group"></div>
+          </label>
+          <label>
+            项目评价
+            <input id="editProjectRating" type="hidden" value="3" />
+            <div id="editProjectRatingStars" class="modal-rating" aria-label="项目评价"></div>
+          </label>
+          <label class="project-edit-field project-edit-date-field">
+            开始时间
+            <span class="project-edit-field-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M7 3v4M17 3v4M3 10h18"></path></svg></span>
+            <input id="editProjectStart" class="date-field" type="text" placeholder="选择日期" readonly />
+          </label>
+          <label class="project-edit-field project-edit-date-field">
+            计划结束时间
+            <span class="project-edit-field-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M7 3v4M17 3v4M3 10h18"></path></svg></span>
+            <input id="editProjectPlanEnd" class="date-field" type="text" placeholder="选择日期" readonly />
+          </label>
+          <label class="project-edit-field project-edit-date-field">
+            实际结束时间
+            <span class="project-edit-field-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M7 3v4M17 3v4M3 10h18"></path></svg></span>
+            <input id="editProjectActualEnd" class="date-field" type="text" placeholder="选择日期" readonly />
+          </label>
+          <label class="project-edit-field project-edit-tag-field">
+            项目标签
+            <input id="editProjectTags" type="hidden" />
+            <span class="project-edit-field-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 13 13 20 4 11V4h7Z"></path><circle cx="8.5" cy="8.5" r="1.5"></circle></svg></span>
+            <button id="openProjectTagsBtn" class="tag-picker-trigger" type="button">选择项目标签</button>
+            <div id="editProjectTagPreview" class="tag-preview"></div>
+          </label>
+        </div>
+        <div id="datePicker" class="date-picker hidden"></div>
+        <label class="project-edit-description-field">
+          项目简介
+          <span class="project-edit-field-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"></path></svg></span>
+          <textarea id="editProjectDescription" rows="5" aria-describedby="editProjectDescriptionCount"></textarea>
+          <span id="editProjectDescriptionCount" class="project-description-count" aria-live="polite">0/500</span>
+        </label>
+        <div class="form-actions">
+          <button id="saveProjectEditBtn" type="button">保存</button>
+          <button type="button" class="secondary" data-close-modal>取消</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="tagPickerDialog" class="modal">
+      <form method="dialog" class="modal-card tag-picker-card">
+        <div class="tag-picker-head">
+          <h2>选择项目标签</h2>
+          <button id="editTagLibraryBtn" type="button" class="secondary tag-edit-toggle">编辑</button>
+        </div>
+        <div id="tagPickerList" class="tag-picker-list"></div>
+        <div class="tag-create-row">
+          <input id="newProjectTagInput" type="text" placeholder="新建标签" />
+          <button id="createProjectTagBtn" type="button">新增</button>
+        </div>
+        <div class="form-actions tag-view-actions">
+          <button id="applyProjectTagsBtn" type="button">完成</button>
+          <button type="button" class="secondary" data-close-modal>取消</button>
+        </div>
+        <div class="form-actions tag-edit-actions">
+          <button id="saveTagLibraryBtn" type="button">保存</button>
+          <button id="cancelTagLibraryBtn" type="button" class="secondary">取消</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="contextMenu" class="context-menu hidden"></div>
+
+    <aside id="assistantPanel" class="assistant-panel">
+      <div class="assistant-head">
+        <div>
+          <p class="eyebrow">origin AI</p>
+          <h3>origin AI 辅助</h3>
+        </div>
+        <button id="closeAssistantBtn" class="icon-button">×</button>
+      </div>
+      <div id="assistantOutput" class="assistant-output">
+        <div class="ai-message">你好，我可以根据当前项目和学习档案，帮你拆解任务、寻找资源、设计下一步行动。</div>
+      </div>
+      <div class="prompt-chips">
+        <button data-prompt="请帮我把当前项目拆解成更清晰的学习节点。">项目拆解</button>
+        <button data-prompt="请推荐适合当前学习目标的课程、书籍和工具。">学习资源</button>
+        <button data-prompt="请根据我的领域和技能记录，建议下一步提升路径。">提升路径</button>
+      </div>
+      <div class="assistant-compose">
+        <textarea id="assistantInput" rows="3" placeholder="输入问题，与 origin 继续对话"></textarea>
+        <button id="assistantGenerateBtn" title="发送" aria-label="发送">
+          <svg class="send-icon" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M4.2 10.2 15.8 4.8l-3.1 10.8-2.4-4.3-4.4 2.2-1.7-3.3Z"></path>
+            <path d="M10.3 11.3 15.8 4.8"></path>
+          </svg>
+        </button>
+      </div>
+    </aside>
+
+    <link rel="stylesheet" href="./canvas.css?v=20260921-edge-v18">
+    <link rel="stylesheet" href="./modern.css?v=20260918-project-gray-fields-v26">
+    <link rel="stylesheet" href="./origin.css?v=20260920-pet-motion-v23">
+    <script src="./origin.js?v=20260920-pet-motion-v23"></script>
+    <script src="./app.js?v=20260921-ai-rail-v84"></script>
+    <script src="./canvas.js?v=20260920-ai-tools-v17"></script>
+    <link rel="stylesheet" href="./discovery.css?v=20260923-analysis-v16">
+    <script src="./discovery.js?v=20260923-analysis-v16"></script>
+    <link rel="stylesheet" href="./career-covers.css?v=20260923-borderless-v14">
+    <script src="./career-covers.js?v=20260917-mastery-row-v8"></script>
+    <link rel="stylesheet" href="./ai-consultation.css?v=20260921-edge-v16">
+    <script src="./ai-consultation.js?v=20260920-recovery-v7"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+node_modules/
+release/
+dist/
+*.log
+.build-*/
+coverage/
+out/
+.DS_Store
+Thumbs.db
+*.growthx
+*.geruosi
+scripts/*.png
+scripts/*.json

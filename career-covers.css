@@ -1,0 +1,293 @@
+/* Compact editorial career cards */
+html body #careerView #careerList > .career-item.with-cover{display:grid!important;grid-template-columns:117px minmax(0,1fr)!important;gap:16px!important;width:100%!important;height:176px!important;min-height:176px!important;padding:10px!important;overflow:hidden!important;align-items:stretch!important;border:1px solid #e9eeec!important;border-radius:14px!important;background:#fff!important;box-shadow:none!important;transform:none!important}
+html body #careerView #careerList > .career-item.with-cover:hover{transform:translateY(-2px)!important;border-color:#dce8e3!important;box-shadow:0 8px 22px rgba(26,68,54,.07)!important}
+html body #careerView #careerList > .career-item.with-cover::after{display:none!important;content:none!important}
+.career-cover{position:relative;width:117px;height:156px;min-width:0;overflow:hidden;border-radius:7px;background:#edf3f0;align-self:center}.career-cover img{display:block;width:100%;height:100%;object-fit:cover}
+html body #careerView #careerList > .career-item.with-cover > .career-cover{grid-column:1!important;grid-row:1!important}
+.career-cover.system-cover::after{content:"";position:absolute;z-index:1;inset:0 0 auto;height:62%;pointer-events:none;background:linear-gradient(180deg,rgba(250,251,251,.96) 0%,rgba(250,251,251,.85) 25%,rgba(250,251,251,.52) 50%,rgba(250,251,251,.16) 76%,rgba(250,251,251,0) 100%)}
+.career-cover-title{position:absolute;z-index:2;left:11px;right:10px;top:16px;color:#111f1b;font:400 12px/1.45 "Microsoft YaHei",sans-serif;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;text-shadow:none}
+.career-card-info{display:flex;min-width:0;flex-direction:column;padding:9px 0 3px}html body #careerView #careerList > .career-item.with-cover > .career-card-info{grid-column:2!important;grid-row:1!important;width:auto!important;height:156px!important;align-self:center!important}
+html body #careerView #careerList > .with-cover .career-card-title{display:-webkit-box!important;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-width:0;margin:0 0 6px!important;font-size:15px!important;line-height:1.4!important;color:#14231f!important}html body #careerView #careerList > .with-cover .career-card-note{display:-webkit-box!important;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;min-height:50px!important;margin:0!important;font-size:11px!important;line-height:1.55!important;color:#75877f!important}
+html body #careerView #careerList > .with-cover .career-card-footer{display:flex!important;align-items:center!important;gap:6px!important;width:100%!important;min-width:0!important;margin:auto 0 0!important;position:static!important}html body #careerView #careerList > .with-cover .career-card-date{font-size:10px!important;color:#7d8f9e!important;white-space:nowrap}html body #careerView #careerList > .with-cover .career-card-date::before{content:none!important;display:none!important}html body #careerView #careerList > .with-cover .career-card-rating:empty{display:none!important}html body #careerView #careerList > .with-cover .career-card-stars{display:flex!important;gap:1px!important;margin-left:auto!important}.career-card-star{width:11px!important;height:11px!important;fill:#f3b221!important}.career-card-level{margin-left:3px!important;font-size:10px;color:#35c899!important;font-weight:700}
+/* Cover presentation in view and edit dialogs */
+html body.career-restored #careerDetailDialog #careerDialogContent .career-dialog-scroll > .career-cover-overview,html body.career-restored #careerDetailDialog #careerDialogContent .career-dialog-scroll > .career-cover-editor{background:#fff!important;border:1px solid #e6ece9!important;padding:18px!important;box-shadow:none!important}.career-cover-large{width:210px;height:280px;flex:none;border-radius:12px}.career-cover-large .career-cover-title{left:24px;right:20px;top:30px;font-size:21px;line-height:1.5}
+.career-cover-overview{display:flex;align-items:center;gap:22px}.career-cover-overview-copy{min-width:0}.career-cover-overview-copy h3{margin:0 0 8px!important;font-size:24px!important}.career-cover-overview-copy p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin:0 0 13px;color:#71827b!important}.career-cover-overview-copy time{font-size:13px;color:#80928b}
+.career-cover-editor-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.career-cover-editor-head h3{margin-bottom:7px!important}.career-cover-editor-head p{margin:0;max-width:620px;font-size:13px;color:#75877f!important;line-height:1.65}.career-cover-editor-head>span{flex:none;padding:5px 9px;border-radius:8px;background:#edf8f3;color:#13966f;font-size:12px;font-weight:700}.career-cover-controls{display:flex;align-items:center;gap:22px;margin-top:16px}.career-cover-controls [data-preview]{width:132px;flex:none}.career-cover-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.career-cover-actions p{flex-basis:100%;margin:3px 0 0!important;font-size:12px!important;color:#82928c!important}.career-cover-controls input[hidden]{display:none!important}
+html body #careerDialogContent .career-cover-actions button{display:inline-flex!important;align-items:center!important;justify-content:center!important;margin:0!important;padding:10px 14px!important;border:0!important;border-radius:10px!important;background:#edf7f3!important;color:#237d64!important;font-size:13px!important;box-shadow:none!important;transform:none!important}html body #careerDialogContent .career-cover-actions [data-upload]{background:#35c899!important;color:#fff!important}
+/* Cropper */
+html body dialog.career-crop-dialog{width:min(520px,92vw);max-height:94vh;padding:24px;box-sizing:border-box;overflow:auto;border:0;border-radius:22px;background:#fff;color:#182a24}.career-crop-dialog::backdrop{background:rgba(29,48,42,.38);backdrop-filter:blur(9px)}.career-crop-dialog>header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.career-crop-dialog h2{margin:0 0 7px;font-size:23px}.career-crop-dialog p{margin:0;font-size:13px;color:#72857e;line-height:1.6}.career-crop-dialog [data-cancel][aria-label]{padding:0!important;width:30px!important;height:30px!important;background:transparent!important;font-size:24px!important;color:#73857f!important}.career-crop-stage{display:grid;place-items:center;margin:17px 0;padding:15px;border-radius:16px;background:#f4f8f6}.career-crop-dialog canvas{display:block;width:min(220px,38vh);height:auto;aspect-ratio:2/3;border:2px solid #43cf9f;border-radius:6px;cursor:grab;touch-action:none}.career-crop-dialog canvas:active{cursor:grabbing}.career-crop-zoom{display:flex;align-items:center;gap:15px}.career-crop-zoom input{flex:1;min-width:0;accent-color:#43cf9f}.career-crop-dialog footer{display:flex;justify-content:flex-end;gap:9px;margin-top:18px}.career-crop-dialog footer button{display:inline-flex!important;margin:0!important;padding:10px 14px!important;border:0!important;border-radius:10px!important;background:#eaf6f1!important;color:#258369!important;font-size:13px!important;box-shadow:none!important}.career-crop-dialog footer [data-confirm]{background:#35c899!important;color:#fff!important}
+@media(max-width:1200px){html body #careerView #careerList > .career-item.with-cover{grid-template-columns:108px minmax(0,1fr)!important}.career-cover{width:108px;height:144px}html body #careerView #careerList > .career-item.with-cover > .career-card-info{height:144px!important}}@media(max-width:640px){.career-cover-overview,.career-cover-controls{align-items:flex-start}.career-cover-overview-copy h3{font-size:20px!important}}
+
+/* Unified image, name, date, and rating card in both dialog modes */
+html body.career-restored #careerDetailDialog #careerDialogContent .career-dialog-scroll > .career-unified-card{display:grid!important;grid-template-columns:210px minmax(0,1fr)!important;gap:34px!important;align-items:start!important;padding:28px 30px!important;background:#f4f7f9!important;border:1px solid #e1e8ec!important;border-radius:22px!important;box-shadow:none!important}
+.career-unified-visual{width:210px}.career-unified-preview{width:210px}.career-unified-cover-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.career-unified-cover-actions input[hidden]{display:none!important}
+html body #careerDialogContent .career-unified-cover-actions button{display:grid!important;place-items:center!important;width:100%!important;height:52px!important;min-width:0!important;margin:0!important;padding:0!important;border:1px solid #dce7e3!important;border-radius:12px!important;background:#eef5f3!important;color:#3c6477!important;box-shadow:none!important;transform:none!important}
+html body #careerDialogContent .career-unified-cover-actions button:first-child{background:#35c899!important;border-color:#35c899!important;color:#fff!important}.career-unified-cover-actions svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.career-unified-fields{display:grid;gap:22px;min-width:0;padding-top:3px}.career-unified-field{position:relative;display:grid!important;gap:9px!important;min-width:0!important;margin:0!important;padding:0!important;background:transparent!important}.career-unified-field>span,.career-unified-rating>span{color:#60758a!important;font-size:16px!important;font-weight:700!important}
+html body.career-restored #careerDetailDialog #careerDialogContent .career-unified-card .career-unified-field :is(input,strong){display:flex!important;align-items:center!important;width:100%!important;min-height:56px!important;margin:0!important;padding:12px 18px!important;box-sizing:border-box!important;border:0!important;border-radius:14px!important;background:#e9eef3!important;color:#14231f!important;font-size:17px!important;font-weight:600!important;box-shadow:none!important}
+.career-name-counter{position:absolute;right:18px;bottom:18px;color:#74889f;font-size:13px}.career-unified-card #careerDialogName{padding-right:70px!important}.career-unified-rating .career-rating-strip{display:block!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important}.career-unified-rating .career-score-row,.career-unified-rating .career-star-row{display:flex!important;gap:10px!important;min-height:56px!important}.career-unified-rating .career-score-row button{flex:1 1 0!important;min-width:44px!important;height:56px!important;border-radius:13px!important}.career-unified-rating .career-star-row button{width:56px!important;height:56px!important;min-width:56px!important;border-radius:13px!important;background:#e9eef3!important}
+.career-crop-dialog canvas{width:min(240px,42vh)!important;aspect-ratio:3/4!important}
+@media(max-width:850px){html body.career-restored #careerDetailDialog #careerDialogContent .career-dialog-scroll > .career-unified-card{grid-template-columns:1fr!important}.career-unified-visual{display:flex;width:100%;gap:14px;align-items:flex-end}.career-unified-preview{width:150px}.career-cover-large{width:150px;height:200px}.career-unified-cover-actions{flex:1}.career-unified-fields{padding-top:0}}
+
+/* 领域与技能的分值紧跟日期，并统一为薄荷绿。 */
+html body.career-restored[data-view="career"] #careerView #careerList > .with-cover .career-card-footer {
+  display:flex!important;
+  grid-template-columns:none!important;
+  justify-content:flex-start!important;
+  gap:0!important;
+}
+html body.career-restored[data-view="career"] #careerView #careerList > .with-cover .career-card-level {
+  flex:0 0 auto!important;
+  justify-self:auto!important;
+  margin-left:auto!important;
+  margin-right:16px!important;
+  color:#43cfa0!important;
+  font-size:18px!important;
+  font-weight:800!important;
+  line-height:1!important;
+}
+
+/* 系统封面使用原图，不叠加顶部虚化或渐变。 */
+html body .career-cover.system-cover::after{content:none!important;display:none!important;background:none!important}
+
+.career-card-mastery{display:inline-flex;align-items:center;align-self:flex-start;margin-top:auto;padding:3px 8px;border-radius:999px;font-size:10px;font-weight:700;line-height:1.3}.career-card-mastery.mastered{background:#e4f8ef;color:#15976f}.career-card-mastery.unmastered{background:#fff3cc;color:#b78100}html body #careerView #careerList > .with-cover .career-card-mastery + .career-card-footer{margin-top:6px!important}
+.career-mastery-choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}.career-mastery-choices button{min-height:56px;border:0;border-radius:14px;background:#e9eef3;color:#65768a;font-weight:700}.career-mastery-choices button.active{background:#35c899;color:#fff}.career-mastery-choices button[data-mastery-value="unmastered"].active{background:#f2b62d;color:#fff}.career-mastery-view{justify-content:flex-start!important}.career-mastery-view.mastered{color:#15976f!important}.career-mastery-view.unmastered{color:#b78100!important}
+.project-relation-mastery{display:inline-flex;align-items:center;align-self:flex-start;margin-top:auto;padding:4px 9px;border-radius:999px;font-size:11px;font-weight:700}.project-relation-mastery.mastered{background:#e4f8ef;color:#15976f}.project-relation-mastery.unmastered{background:#fff3cc;color:#b78100}.project-relation-mastery+footer{margin-top:7px!important}
+
+
+/* Mastery shares the completion row in cards and in the unified detail panel. */
+html body.career-restored #careerDetailDialog .career-unified-fields{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  align-items:end!important;
+}
+html body.career-restored #careerDetailDialog .career-unified-fields>.career-unified-field:first-child,
+html body.career-restored #careerDetailDialog .career-unified-fields>.career-unified-rating{
+  grid-column:1/-1!important;
+}
+html body.career-restored #careerDetailDialog .career-unified-fields>.career-unified-field:nth-child(2),
+html body.career-restored #careerDetailDialog .career-unified-fields>.career-mastery-field{
+  grid-column:auto!important;
+  min-width:0!important;
+}
+html body.career-restored #careerDetailDialog .career-unified-fields .career-mastery-view{
+  display:flex!important;align-items:center!important;width:100%!important;min-height:56px!important;
+  margin:0!important;padding:12px 18px!important;box-sizing:border-box!important;border:0!important;
+  border-radius:14px!important;background:#e9eef3!important;font-size:17px!important;font-weight:600!important;
+}
+html body #careerView #careerList>.with-cover .career-card-footer>.career-card-mastery{
+  display:inline-flex!important;align-items:center!important;align-self:center!important;
+  flex:0 0 auto!important;margin:0 7px 0 0!important;
+}
+html body #careerView #careerList>.with-cover .career-card-footer>.career-card-date{
+  flex:0 0 auto!important;
+}
+html body #careerView #careerList>.with-cover .career-card-footer>.career-card-level,
+html body #careerView #careerList>.with-cover .career-card-footer>.career-card-stars{
+  margin-left:auto!important;
+}
+@media(max-width:850px){
+  html body.career-restored #careerDetailDialog .career-unified-fields{grid-template-columns:1fr!important}
+  html body.career-restored #careerDetailDialog .career-unified-fields>.career-unified-field:first-child,
+  html body.career-restored #careerDetailDialog .career-unified-fields>.career-unified-rating{grid-column:auto!important}
+}
+
+
+/* Mastery status sits just above the completion date. */
+html body #careerView #careerList>.with-cover .career-card-footer{
+  position:relative!important;min-height:38px!important;padding-top:18px!important;box-sizing:border-box!important;
+}
+html body #careerView #careerList>.with-cover .career-card-footer>.career-card-mastery{
+  position:absolute!important;left:0!important;top:0!important;margin:0!important;
+}
+html body.career-restored #careerDetailDialog .career-mastery-choices{
+  display:grid!important;grid-template-columns:1fr 1fr!important;gap:0!important;min-height:56px!important;
+  padding:4px!important;border:0!important;border-radius:14px!important;background:#e9eef3!important;box-sizing:border-box!important;
+}
+html body.career-restored #careerDetailDialog .career-mastery-choices button{
+  min-height:48px!important;border:0!important;border-radius:10px!important;background:transparent!important;
+  color:#586b68!important;font-weight:850!important;box-shadow:none!important;
+}
+html body.career-restored #careerDetailDialog .career-mastery-choices button.active{
+  background:#42cfa1!important;color:#fff!important;
+}
+html body.career-restored #careerDetailDialog .career-mastery-choices button[data-mastery-value="unmastered"].active{
+  background:#42cfa1!important;color:#fff!important;
+}
+
+
+/* Reuse the learning-career card UI in project and dream relations. */
+html body .career-reference-card{display:grid!important;grid-template-columns:117px minmax(0,1fr)!important;gap:16px!important;width:388px!important;max-width:100%!important;height:176px!important;min-height:176px!important;padding:10px!important;box-sizing:border-box!important;overflow:hidden!important;align-items:stretch!important;border:1px solid #e9eeec!important;outline:0!important;border-radius:14px!important;background:#fff!important;box-shadow:none!important;transform:none!important;cursor:pointer!important}
+html body .career-reference-card:hover{transform:translateY(-2px)!important;border-color:#dce8e3!important;background:#fff!important;box-shadow:0 8px 22px rgba(26,68,54,.07)!important}
+html body .career-reference-card>.career-cover{grid-column:1!important;grid-row:1!important;width:117px!important;height:156px!important;align-self:center!important}
+html body .career-reference-card>.career-card-info{grid-column:2!important;grid-row:1!important;display:flex!important;flex-direction:column!important;width:auto!important;height:156px!important;min-width:0!important;padding:9px 0 3px!important;align-self:center!important}
+html body .career-reference-card .career-card-title{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:2!important;overflow:hidden!important;min-width:0!important;margin:0 0 6px!important;color:#14231f!important;font-size:15px!important;font-weight:700!important;line-height:1.4!important;white-space:normal!important}
+html body .career-reference-card .career-card-note{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:3!important;overflow:hidden!important;min-height:50px!important;margin:0!important;color:#75877f!important;font-size:11px!important;line-height:1.55!important}
+html body .career-reference-card .career-card-footer{position:relative!important;display:flex!important;align-items:center!important;gap:6px!important;width:100%!important;min-height:38px!important;margin:auto 0 0!important;padding-top:18px!important;box-sizing:border-box!important}
+html body .career-reference-card .career-card-mastery{position:absolute!important;left:0!important;top:0!important;margin:0!important}
+html body .career-reference-card .career-card-date{font-size:10px!important;color:#7d8f9e!important;white-space:nowrap!important}
+html body .career-reference-card :is(.career-card-level,.career-card-stars){margin-left:auto!important}
+html body[data-view="projects"] #projectsView .project-relation-card-grid{grid-template-columns:repeat(auto-fill,minmax(340px,388px))!important;gap:18px!important}
+html body #careerView .sd-dream-project-grid{grid-template-columns:repeat(auto-fill,minmax(340px,388px))!important;gap:18px!important}
+html body #careerView .sd-dream-project-grid>.career-reference-card{margin:0!important}
+
+/* Direct input tracking: no queued progress animation. */
+html body #careerView .sd-dream-progress input[type=range]{transition:none!important;will-change:auto!important}
+html body.career-restored[data-view="career"] .career-tab-indicator{transition:transform 180ms cubic-bezier(.22,1,.36,1),width 180ms cubic-bezier(.22,1,.36,1)!important}
+
+
+/* Dream and project references use the same fixed Career card geometry. */
+html body #careerView .sd-dream-project-grid > article.career-reference-card,
+html body[data-view="projects"] #projectsView article.project-relation-card.career-reference-card {
+  display: grid !important;
+  grid-template-columns: 117px minmax(0, 1fr) !important;
+  gap: 16px !important;
+  width: 388px !important;
+  max-width: 100% !important;
+  height: 176px !important;
+  min-height: 176px !important;
+  padding: 10px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  align-items: stretch !important;
+  border: 1px solid #e9eeec !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+html body #careerView .sd-dream-project-grid > article.career-reference-card > .career-cover,
+html body[data-view="projects"] #projectsView article.project-relation-card.career-reference-card > .career-cover {
+  width: 117px !important;
+  height: 156px !important;
+  margin: 0 !important;
+  align-self: center !important;
+}
+
+
+/* Compact relation cards. Both hosts cap the layout at two columns. */
+html body[data-view="projects"] #projectsView .project-relation-card-grid,
+html body #careerView .sd-dream-project-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 280px)) !important;
+  justify-content: start !important;
+  align-items: start !important;
+  gap: 14px !important;
+  width: 100% !important;
+  max-width: 574px !important;
+}
+html body[data-view="projects"] #projectsView .project-relation-card-grid > article.project-relation-card.career-reference-card,
+html body #careerView .sd-dream-project-grid > article.dream-project-reference-card.career-reference-card {
+  display: grid !important;
+  grid-template-columns: 88px minmax(0, 1fr) !important;
+  grid-template-rows: 1fr !important;
+  align-content: stretch !important;
+  align-items: stretch !important;
+  gap: 10px !important;
+  width: 100% !important;
+  max-width: 280px !important;
+  height: 140px !important;
+  min-height: 140px !important;
+  padding: 9px !important;
+  border: 1px solid #e3eae7 !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+html body[data-view="projects"] #projectsView .project-relation-card-grid > .career-reference-card > .career-cover,
+html body #careerView .sd-dream-project-grid > .career-reference-card > .career-cover {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  width: 88px !important;
+  height: 122px !important;
+  min-width: 88px !important;
+  margin: 0 !important;
+  align-self: center !important;
+  border-radius: 10px !important;
+}
+html body[data-view="projects"] #projectsView .project-relation-card-grid > .career-reference-card > .career-card-info,
+html body #careerView .sd-dream-project-grid > .career-reference-card > .career-card-info {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: 122px !important;
+  padding: 5px 0 2px !important;
+  overflow: hidden !important;
+}
+html body[data-view="projects"] #projectsView .project-relation-card-grid > .career-reference-card .career-card-title,
+html body #careerView .sd-dream-project-grid > .career-reference-card .career-card-title {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 0 5px !important;
+  overflow: hidden !important;
+  color: #14231f !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+html body[data-view="projects"] #projectsView .project-relation-card-grid > .career-reference-card .career-card-note,
+html body #careerView .sd-dream-project-grid > .career-reference-card .career-card-note {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  min-height: 34px !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  color: #75877f !important;
+  font-size: 11px !important;
+  line-height: 1.5 !important;
+}
+html body[data-view="projects"] #projectsView .project-relation-card-grid > .career-reference-card .career-card-footer,
+html body #careerView .sd-dream-project-grid > .career-reference-card .career-card-footer {
+  position: relative !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  gap: 5px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 35px !important;
+  margin: auto 0 0 !important;
+  padding: 17px 0 0 !important;
+  box-sizing: border-box !important;
+}
+html body[data-view="projects"] #projectsView .project-relation-card-grid > .career-reference-card .career-card-mastery,
+html body #careerView .sd-dream-project-grid > .career-reference-card .career-card-mastery {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  margin: 0 !important;
+  padding: 2px 7px !important;
+  font-size: 9px !important;
+}
+html body[data-view="projects"] #projectsView .project-relation-card-grid > .career-reference-card .career-card-date,
+html body #careerView .sd-dream-project-grid > .career-reference-card .career-card-date {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  color: #7d8f9e !important;
+  font-size: 9px !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+html body[data-view="projects"] #projectsView .project-relation-card-grid > .career-reference-card :is(.career-card-level,.career-card-stars),
+html body #careerView .sd-dream-project-grid > .career-reference-card :is(.career-card-level,.career-card-stars) {
+  flex: none !important;
+  margin-left: auto !important;
+  font-size: 9px !important;
+}
+
+/* Learning-career cards use a borderless surface with only a barely visible lift. */
+html body.career-restored[data-view="career"] #careerView #careerList > .career-item.with-cover,
+html body.career-restored[data-view="career"] #careerView #careerList > .career-item.with-cover:hover,
+html body.career-restored[data-view="career"] #careerView #careerList > .career-item.with-cover.active {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: 0 2px 7px rgba(26, 68, 54, .035) !important;
+}
